@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kishore Yelchuri — Mechanical Engineer</title>
+<meta name="description" content="Portfolio of Lohit Naga Kishore Yelchuri, mechanical engineer specializing in structural design, FEA and vehicle systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e1116; --bg2:#151a21; --card:#1a2029; --line:#2a323d;
+    --text:#e6e9ee; --muted:#9aa5b4; --accent:#ff8a3d; --accent2:#4fc3f7;
+    --radius:14px; --max:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:48px 48px;background-attachment:fixed;background-position:-1px -1px}
+  body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at top,rgba(14,17,22,.55),var(--bg) 70%);z-index:-1}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .mono{font-family:"JetBrains Mono",monospace}
+  h1,h2,h3{font-family:"Space Grotesk",sans-serif;line-height:1.15}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(14,17,22,.8);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:"Space Grotesk";font-weight:700;font-size:1.1rem;letter-spacing:.5px}
+  .logo span{color:var(--accent)}
+  .links{display:flex;gap:28px;font-size:.92rem;color:var(--muted)}
+  .links a:hover{color:var(--text)}
+  .menu-btn{display:none;background:none;border:0;color:var(--text);font-size:1.5rem;cursor:pointer}
+
+  /* hero */
+  .hero{padding:110px 0 90px}
+  .tag{display:inline-block;font-size:.8rem;color:var(--accent);border:1px solid rgba(255,138,61,.4);padding:4px 12px;border-radius:99px;margin-bottom:22px}
+  .hero h1{font-size:clamp(2.4rem,6vw,4.4rem);font-weight:700;max-width:850px}
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .hero p.lead{font-size:1.15rem;color:var(--muted);max-width:640px;margin:22px 0 34px}
+  .btns{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:10px;font-weight:600;font-size:.95rem;transition:.2s;border:1px solid var(--line)}
+  .btn.primary{background:var(--accent);color:#14100c;border-color:var(--accent)}
+  .btn.primary:hover{filter:brightness(1.1);transform:translateY(-2px)}
+  .btn.ghost:hover{border-color:var(--accent2);color:var(--accent2)}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:70px}
+  .stat{background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+  .stat b{display:block;font-family:"Space Grotesk";font-size:2rem;color:var(--accent2)}
+  .stat span{font-size:.85rem;color:var(--muted)}
+
+  section{padding:90px 0}
+  .sec-head{margin-bottom:44px}
+  .sec-head .mono{color:var(--accent);font-size:.85rem}
+  .sec-head h2{font-size:clamp(1.8rem,3.5vw,2.5rem);margin-top:6px}
+
+  /* about */
+  .about{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:start}
+  .about p{color:var(--muted);margin-bottom:16px;font-size:1.05rem}
+  .about p strong{color:var(--text)}
+  .facts{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+  .facts div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:.93rem}
+  .facts div:last-child{border:0}
+  .facts span:first-child{color:var(--muted)}
+  .facts span:last-child{text-align:right}
+
+  /* timeline */
+  .timeline{position:relative;padding-left:30px}
+  .timeline::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--accent),var(--accent2))}
+  .job{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px;margin-bottom:22px}
+  .job::before{content:"";position:absolute;left:-31px;top:28px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--accent)}
+  .job-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 16px;margin-bottom:12px}
+  .job h3{font-size:1.2rem}
+  .job h3 span{color:var(--accent2);font-weight:500}
+  .job .when{font-size:.82rem;color:var(--muted)}
+  .job ul{padding-left:18px;color:var(--muted);font-size:.95rem}
+  .job li{margin:6px 0}
+  .job li b{color:var(--text);font-weight:600}
+
+  /* projects */
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+  .filters button{background:var(--bg2);color:var(--muted);border:1px solid var(--line);padding:8px 16px;border-radius:99px;cursor:pointer;font:500 .88rem Inter;transition:.2s}
+  .filters button.on,.filters button:hover{color:#14100c;background:var(--accent);border-color:var(--accent)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:.25s;display:flex;flex-direction:column}
+  .card:hover{transform:translateY(-5px);border-color:var(--accent)}
+  .card .img{position:relative;aspect-ratio:16/9;background:#151a21;overflow:hidden}
+  .card img{width:100%;height:100%;object-fit:cover;transition:.4s}
+  .card:hover img{transform:scale(1.05)}
+  .card .body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+  .card .cat{font-size:.75rem;color:var(--accent2);text-transform:uppercase;letter-spacing:1px}
+  .card h3{font-size:1.08rem;margin:6px 0 8px}
+  .card p{font-size:.9rem;color:var(--muted);flex:1}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+  .chip{font-size:.72rem;padding:3px 9px;border-radius:6px;background:var(--bg2);border:1px solid var(--line);color:var(--muted)}
+  .card.hide{display:none}
+
+  /* modal */
+  .modal{position:fixed;inset:0;background:rgba(5,7,10,.85);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
+  .modal.open{display:flex}
+  .modal-box{position:relative;background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);max-width:820px;width:100%;max-height:90vh;overflow:auto}
+  #m-img{width:100%;background:#151a21;display:block;height:min(56vw,460px);object-fit:contain}
+  .modal-content{padding:28px}
+  .thumbs{display:flex;gap:8px;padding:10px 12px 0;overflow-x:auto}
+  .thumbs:empty{display:none}
+  .thumbs img{width:96px;height:56px;object-fit:cover;border-radius:6px;cursor:pointer;opacity:.5;border:2px solid transparent;flex:none;max-height:none;background:#151a21}
+  .thumbs img.on,.thumbs img:hover{opacity:1;border-color:var(--accent)}
+  .count{position:absolute;top:10px;left:10px;background:rgba(14,17,22,.8);color:var(--text);font:500 .72rem 'JetBrains Mono',monospace;padding:3px 8px;border-radius:6px}
+  .modal-content h3{font-size:1.5rem;margin:6px 0 14px}
+  .modal-content h4{font-family:"Space Grotesk";color:var(--accent);margin:18px 0 6px;font-size:1rem}
+  .modal-content p,.modal-content li{color:var(--muted);font-size:.96rem}
+  .modal-content ul{padding-left:20px}
+  .modal-content li{margin:5px 0}
+  .close{position:absolute;top:12px;right:12px;background:var(--card);border:1px solid var(--line);color:var(--text);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1.2rem;z-index:2}
+
+  /* skills */
+  .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .skill{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .skill h3{font-size:1.05rem;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  .skill h3::before{content:"";width:10px;height:10px;background:var(--accent);transform:rotate(45deg)}
+  .skill .chips{margin:0}
+  .skill .chip{font-size:.85rem;padding:6px 12px;color:var(--text)}
+
+  /* edu */
+  .edu{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .edu .job::before{display:none}
+
+  /* docs */
+  .docs{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .doc{background:linear-gradient(135deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:var(--radius);padding:30px;display:flex;flex-direction:column;gap:14px}
+  .doc h3{font-size:1.3rem}
+  .doc p{color:var(--muted);font-size:.95rem;flex:1}
+  .doc .btns{margin-top:6px}
+
+  /* contact */
+  .contact{text-align:center;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:60px 30px}
+  .contact h2{font-size:clamp(1.8rem,4vw,2.8rem)}
+  .contact p{color:var(--muted);margin:14px auto 30px;max-width:520px}
+  .contact .btns{justify-content:center}
+  footer{padding:40px 0;text-align:center;color:var(--muted);font-size:.85rem}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:.7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:900px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .about,.skills,.edu,.docs{grid-template-columns:1fr}
+    .stats{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:640px){
+    .grid{grid-template-columns:1fr}
+    .links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--bg);padding:20px 24px;border-bottom:1px solid var(--line)}
+    .links.show{display:flex}
+    .menu-btn{display:block}
+    .hero{padding:70px 0 60px}
+    section{padding:64px 0}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="logo">KISHORE<span>.</span>Y</a>
+    <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('.links').classList.toggle('show')">☰</button>
+    <div class="links" onclick="this.classList.remove('show')">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero wrap" id="top">
+  <span class="tag mono">// Mechanical Engineer · Farmington Hills, MI</span>
+  <h1>I design structures that are <em>lighter, stronger</em> and built to ship.</h1>
+  <p class="lead">Hi, I'm Lohit Naga Kishore Yelchuri. I take vehicle and product hardware from CAD concept through FEA validation, prototype builds and supplier-ready drawings.</p>
+  <div class="btns">
+    <a href="#projects" class="btn primary">View my work →</a>
+    <a href="assets/docs/Kishore_Yelchuri_Resume.pdf" class="btn ghost" target="_blank" rel="noopener">Download resume</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>4+</b><span>years of engineering experience</span></div>
+    <div class="stat"><b>500+</b><span>SolidWorks assemblies designed</span></div>
+    <div class="stat"><b>1,000+</b><span>GA optimization iterations scripted</span></div>
+    <div class="stat"><b>20%</b><span>battery enclosure weight reduction</span></div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="mono">01 / about</span><h2>Design, simulate, build, repeat.</h2></div>
+    <div class="about">
+      <div class="reveal">
+        <p>I'm a mechanical engineer with a <strong>Master of Engineering in Aerospace Engineering from Texas A&amp;M</strong> and a background spanning EV battery packs, commercial vehicle platforms, heavy-equipment chassis and composite structures.</p>
+        <p>My work sits where <strong>CAD, simulation and the shop floor</strong> meet: GD&amp;T and tolerance stack-ups, nonlinear FEA in Abaqus and ANSYS, Python-driven optimization, and the fixtures, first-article inspections and supplier conversations that get a design into production.</p>
+        <p>Today I'm at <strong>Grounded</strong>, designing structural and interior systems for modular commercial vehicles across EV, hybrid and gas powertrains.</p>
+      </div>
+      <div class="facts reveal">
+        <div><span>Current role</span><span>Mechanical Engineer, Grounded</span></div>
+        <div><span>Location</span><span>Farmington Hills, MI</span></div>
+        <div><span>Education</span><span>MEng Aerospace, Texas A&amp;M<br>BE Mechanical, Osmania Univ.</span></div>
+        <div><span>Core tools</span><span>SolidWorks · Abaqus · ANSYS · Python</span></div>
+        <div><span>Focus</span><span>Structures · FEA · DFM · Vehicles</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="mono">02 / experience</span><h2>Where I've worked</h2></div>
+    <div class="timeline">
+      <div class="job reveal">
+        <div class="job-top"><h3>Mechanical Engineer <span>· Grounded</span></h3><span class="when mono">Jun 2026 – Present</span></div>
+        <ul>
+          <li>Designed structural and interior systems for modular commercial vehicle platforms on a common architecture across <b>EV, hybrid and gas</b> powertrains.</li>
+          <li>Led interior module development from concept through prototype builds, standardizing build processes for repeatable assembly.</li>
+          <li>Identified and qualified vendors and built the supply chain for critical prototype and production components.</li>
+        </ul>
+      </div>
+      <div class="job reveal">
+        <div class="job-top"><h3>Mechanical Design Engineer <span>· KWIK Equipment</span></h3><span class="when mono">Feb 2025 – Jun 2026</span></div>
+        <ul>
+          <li>Designed sheet metal chassis subsystems in SolidWorks with GD&amp;T and tolerance stack-ups across <b>500+ assemblies</b>.</li>
+          <li>Ran ANSYS Workbench dynamic simulations on chassis structures and drove geometry changes that <b>improved structural performance by 20%</b>.</li>
+          <li>Authored ASME Y14.5 drawings and managed BOM releases and ECOs in SolidWorks PDM, <b>shortening release cycles by 15%</b>.</li>
+          <li>Built end-of-line inspection fixtures and led First Article Inspections, <b>raising first-pass acceptance by 20%</b>.</li>
+        </ul>
+      </div>
+      <div class="job reveal">
+        <div class="job-top"><h3>Mechanical Engineering Intern <span>· Our Next Energy</span></h3><span class="when mono">May 2023 – Aug 2023</span></div>
+        <ul>
+          <li>Redesigned battery enclosure geometry with Tier 1 supplier DFM feedback, <b>cutting enclosure weight by 20%</b>.</li>
+          <li>Worst-case and RSS stack-ups plus ANSYS analysis defined bracket and fastener specs for a <b>50% gain in torque retention</b>.</li>
+          <li>Built a strain-gauged PCB test fixture and revised supports to keep board strain under 450 µε.</li>
+          <li>Integrated busbars, PCBs and cooling plates in a tight envelope, <b>reducing late ECOs by 30%</b> and peak module temperature by 3 °C.</li>
+        </ul>
+      </div>
+      <div class="job reveal">
+        <div class="job-top"><h3>Mechanical Engineer <span>· Texas A&amp;M Engineering Experiment Station</span></h3><span class="when mono">May 2022 – Feb 2025</span></div>
+        <ul>
+          <li>Led nonlinear Abaqus FEA for composite structure optimization, <b>improving manufacturability by 30%</b>.</li>
+          <li>Built Python automation workflows for Abaqus parametric studies, enabling large design-space exploration.</li>
+          <li>Analyzed buckling and nonlinear behavior in polymer and elastomer parts, <b>improving crack resistance and durability by 30%</b>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="mono">03 / projects</span><h2>Selected work</h2></div>
+    <div class="filters reveal">
+      <button class="on" data-f="all">All</button>
+      <button data-f="industry">Industry</button>
+      <button data-f="research">Research &amp; FEA</button>
+      <button data-f="vehicle">Vehicles</button>
+      <button data-f="design">Design &amp; Fabrication</button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="mono">04 / skills</span><h2>Toolbox</h2></div>
+    <div class="skills">
+      <div class="skill reveal"><h3>CAD &amp; Product Development</h3><div class="chips"><span class="chip">SolidWorks</span><span class="chip">SolidWorks PDM</span><span class="chip">Siemens NX</span><span class="chip">CATIA V5</span><span class="chip">Creo</span><span class="chip">Fusion 360</span><span class="chip">DFM / DFA</span></div></div>
+      <div class="skill reveal"><h3>Analysis &amp; Engineering Methods</h3><div class="chips"><span class="chip">Abaqus CAE</span><span class="chip">ANSYS Workbench</span><span class="chip">Nonlinear FEA</span><span class="chip">GD&amp;T</span><span class="chip">ASME Y14.5</span><span class="chip">DFMEA</span><span class="chip">Tolerance stack-ups</span></div></div>
+      <div class="skill reveal"><h3>Prototyping, Manufacturing &amp; Test</h3><div class="chips"><span class="chip">CNC machining</span><span class="chip">Welding</span><span class="chip">Additive manufacturing</span><span class="chip">Fixture design</span><span class="chip">Material testing</span><span class="chip">First Article Inspection</span></div></div>
+      <div class="skill reveal"><h3>Programming</h3><div class="chips"><span class="chip">Python</span><span class="chip">Abaqus scripting</span><span class="chip">Parametric studies</span><span class="chip">Genetic algorithms</span><span class="chip">LabVIEW DAQ</span></div></div>
+    </div>
+
+    <div class="sec-head reveal" style="margin-top:80px"><span class="mono">05 / education</span><h2>Education</h2></div>
+    <div class="edu">
+      <div class="job reveal">
+        <div class="job-top"><h3>Texas A&amp;M University</h3><span class="when mono">Jan 2022 – Dec 2023</span></div>
+        <p style="color:var(--text)">Master of Engineering, Aerospace Engineering · GPA 3.50/4.0</p>
+        <p style="color:var(--muted);font-size:.92rem;margin-top:8px">Finite Element Methods, Structural Design, Advanced CAE, Advanced Manufacturing Methods</p>
+      </div>
+      <div class="job reveal">
+        <div class="job-top"><h3>Osmania University, India</h3><span class="when mono">Aug 2017 – Jul 2021</span></div>
+        <p style="color:var(--text)">Bachelor of Engineering, Mechanical Engineering</p>
+        <p style="color:var(--muted);font-size:.92rem;margin-top:8px">Design Head, SAE Collegiate Team (MVSR Engineering College). Mechanical Design, Strength of Materials, Heat Transfer, Fluid Mechanics</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="resume">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="mono">06 / documents</span><h2>Resume &amp; portfolio</h2></div>
+    <div class="docs">
+      <div class="doc reveal">
+        <span class="mono" style="color:var(--accent2);font-size:.8rem">PDF · 1 page</span>
+        <h3>Resume</h3>
+        <p>Experience, skills, projects and education on a single page.</p>
+        <div class="btns">
+          <a class="btn primary" href="assets/docs/Kishore_Yelchuri_Resume.pdf" target="_blank" rel="noopener">View</a>
+          <a class="btn ghost" href="assets/docs/Kishore_Yelchuri_Resume.pdf" download>Download</a>
+        </div>
+      </div>
+      <div class="doc reveal">
+        <span class="mono" style="color:var(--accent2);font-size:.8rem">PDF · 14 pages</span>
+        <h3>Project Portfolio</h3>
+        <p>The full visual portfolio, with simulation results, test setups and build photos for every project.</p>
+        <div class="btns">
+          <a class="btn primary" href="assets/docs/Kishore_Yelchuri_Portfolio.pdf" target="_blank" rel="noopener">View</a>
+          <a class="btn ghost" href="assets/docs/Kishore_Yelchuri_Portfolio.pdf" download>Download</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact reveal">
+      <span class="mono" style="color:var(--accent)">07 / contact</span>
+      <h2>Let's build something.</h2>
+      <p>Open to conversations about mechanical design, structures and vehicle engineering roles.</p>
+      <div class="btns">
+        <a class="btn primary" href="mailto:ylnkishore@gmail.com">ylnkishore@gmail.com</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/ylnkishore" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="yr"></span> Lohit Naga Kishore Yelchuri</footer>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box" role="dialog" aria-modal="true">
+    <button class="close" onclick="closeModal()" aria-label="Close">✕</button>
+    <img id="m-img" alt="">
+    <div class="thumbs" id="m-thumbs"></div>
+    <div class="modal-content" id="m-body"></div>
+  </div>
+</div>
+
+<script>
+const projects = [
+  {id:"one-energy", cat:"industry", label:"Industry · EV Battery", title:"Battery Enclosure Redesign — Our Next Energy",
+   blurb:"Lighter, more manufacturable EV battery enclosure shaped by supplier DFM feedback.",
+   tags:["SolidWorks","GD&T","ANSYS","DFM"],
+   sections:{"What I did":[
+     "Redesigned battery enclosure geometry for mass manufacturing using GD&T and DFM input from Tier 1 sheet metal and injection-molding suppliers — 20% lighter.",
+     "Ran worst-case and RSS tolerance stack-ups and FEA to refine bracket geometry and fastener setup, improving joint reliability / torque retention by 50%.",
+     "Built a strain-gauged PCB test setup, located high-stress areas and adjusted supports to keep strain under 450 µε.",
+     "Reworked electromechanical layout (busbars, PCBs, cooling plates) based on thermal testing, lowering peak temperature by 3 °C."]}},
+  {id:"bistable-gripper", cat:"research", label:"Research · DEVCOM Army Research Lab", title:"Bi-stable Gripping Mechanism for Drone Recharging",
+   blurb:"A 3D-printed, near-zero-power gripper that lets low-battery drones latch onto charging stations.",
+   tags:["Abaqus","Python","Genetic Algorithm","MTS Testing"],
+   sections:{"Problem":["Surveillance drones lack the battery charge for long-range, long-duration missions, making in-field recharging a key design requirement."],
+   "Solution":[
+     "Designed a landing mechanism with no motors or moving electrical parts, using bistable material behavior to grip with almost zero electricity.",
+     "Built a scriptable Abaqus analysis driven by Python for parametric studies and optimization.",
+     "Ran 1,000+ genetic-algorithm iterations to maximize load capacity at minimum mass.",
+     "Validated the 3D-printed prototype on an MTS test frame, landing within 15% of CAE predictions."]}},
+  {id:"airframe-panel", cat:"research", label:"Research · Structures", title:"Stiffened Airframe Panel Optimization",
+   blurb:"Lightest no-buckle panel found via analytical, FEA and composite GA optimization.",
+   tags:["Abaqus","Python","Composites","Buckling"],
+   sections:{"Approach":[
+     "Formulated an optimization problem for a stiffened aluminum airframe panel section (thin skin + L-shaped stiffeners) that must not buckle under load, at least mass.",
+     "Part 1: Python analytical model of the no-buckling criteria, optimized with a genetic algorithm.",
+     "Part 2: Scripted Abaqus FEA model checking the same criteria and running the same optimization.",
+     "Part 3: Composite skin added to the FEA model and optimized again."],
+   "Result":["Identified the minimum stiffener count and skin thickness for the lightest non-buckling structure. Composites with tuned ply angles needed even fewer stiffeners and produced the lightest design."]}},
+  {id:"gas-leak", cat:"research", label:"Research · Sensors & Test", title:"Ultra-Low Gas Leak Detection with Carbon Nanofiber Sensor",
+   blurb:"Sealed test chamber that detects leaks conventional methods typically miss.",
+   tags:["LabVIEW","Python","Test Design","DAQ"],
+   sections:{"Test setup":[
+     "Built a sealed chamber with a controlled 50-micron leak and syringe-pump flow control.",
+     "Positioned the nanofiber sensor near the leak source; compared NO₂ against an air baseline for sensitivity and noise."],
+   "Method":["Controlled flow via syringe pump, voltage logged with a LabVIEW DAQ, and time-based response analyzed in Excel and Python with consistent stabilization/exposure cycles."],
+   "Results":["Measured a clear voltage response to NO₂ at ultra-low flow rates that are typically missed by conventional leak detection."]}},
+  {id:"connecting-rod", cat:"research", label:"Analysis · Failure", title:"Tensile Simulation of a Piston Connecting Rod",
+   blurb:"Predicting conrod failure modes from triaxiality, Lode parameter and plastic strain.",
+   tags:["Abaqus","Fracture","Plasticity"],
+   sections:{"Problem":["A connecting rod failure causes catastrophic engine damage."],
+   "Solution":["Simulated tensile loading in Abaqus and extracted stress triaxiality, Lode parameter and plastic strain to predict failure mode and locate stress concentrations for design optimization."]}},
+  {id:"rocket-nozzle", cat:"research", label:"Capstone · Propulsion", title:"Solid Rocket Motor Nozzle for Maximum Thrust",
+   blurb:"Modified G.V.R. Rao contour nozzle showing a CFD thrust gain over the analytical model.",
+   tags:["CFD","Propulsion","Nozzle Design"],
+   sections:{"Highlights":[
+     "Studied the Rao optimum-thrust contour nozzle, the basis for modern non-conical nozzles.",
+     "Made small contour modifications that indicated increased thrust in the CFD model compared to the analytical model."]}},
+  {id:"supra-sae", cat:"vehicle", label:"Competition · Formula Student", title:"SAE SUPRA India — Team Ampere Motorsport",
+   blurb:"Formula student car built by a 25-person team; one of the most cost-effective designs entered.",
+   tags:["SolidWorks","ANSYS","Generative Design","Chassis"],
+   sections:{"My contribution":[
+     "Modeled suspension uprights and driveshaft couplings in SolidWorks, validated in ANSYS under combined cornering, braking and road loads — 12% lighter.",
+     "Integrated structural and thermal analysis of the space-frame chassis: 10% lighter, 15% better cooling."],
+   "Vehicle":["373.2 cc liquid-cooled single-cylinder with custom ECU mapping for high initial torque","Bybre 2-piston calipers with 230 mm slotted rotors on all four corners","FRP body panels, 95th-percentile male ergonomics, generative-designed suspension parts","Fully in-house fabrication"]}},
+  {id:"efficycle", cat:"vehicle", label:"Competition · Hybrid Vehicle", title:"SAE India Efficycle — Team Trikut V4",
+   blurb:"Hybrid human/electric vehicle that finished 14th nationally.",
+   tags:["ANSYS","Roll-over Analysis","Steering Geometry"],
+   sections:{"Highlights":["Finished 14th in the country","33 kph top speed with combined electric and mechanical propulsion","Lightweight frame validated with roll-over and impact analysis in ANSYS","Simplified steering and suspension geometry for better handling"]}},
+  {id:"sheet-forming", cat:"design", label:"Manufacturing · Architecture", title:"Incremental Sheet Forming for a Building Facade",
+   blurb:"Low-waste CNC forming of complex architectural panels in galvanized steel.",
+   tags:["Grasshopper","SolidWorks","Fusion 360","CNC"],
+   sections:{"Problem":["Futuristic architectural designs often need complex manufacturing and generate a lot of waste."],
+   "Solution":["Architecture–engineering collaboration using incremental sheet forming to cut waste and simplify manufacturing.","Design taken from Grasshopper → SolidWorks → Fusion 360 toolpaths, then CNC-formed on galvanized steel sheet."]}},
+  {id:"seating-assist", cat:"design", label:"Product Design · Bio-inspired", title:"Grasshopper-inspired Seating Assist",
+   blurb:"Passive sit-to-stand aid for elderly, disabled and injured users.",
+   tags:["Biomimicry","Concept Design","Sustainable Materials"],
+   sections:{"Problem":["Sitting down and getting up is tedious for elderly, disabled and injured people."],
+   "Solution":["Designed a grasshopper-inspired assist from renewable, non-conventional materials that works from an active element's material properties and the user's own weight, developed through structured ideation and concept generation."]}},
+  {id:"catapult", cat:"design", label:"Design & Fabrication", title:"Table Tennis Ball Catapult Launcher",
+   blurb:"Working launcher with 15+ moving parts built from recycled materials.",
+   tags:["Mechanism Design","Fabrication","Sustainability"],
+   sections:{"Highlights":["Designed and fabricated a working ping-pong ball catapult as a final project","Over 15 moving parts in the final assembly","Recycled materials used to improve sustainability"]}},
+  {id:"scissor-jack", cat:"design", label:"Design & Fabrication", title:"Laboratory Scissor Jack Mechanism",
+   blurb:"Lightweight, stable 3D-printed lab jack for sensitive experiments.",
+   tags:["SolidWorks","3D Printing","PLA / ABS"],
+   sections:{"Problem":["Lab experiments need a light, stable jack to hold sensitive containers."],
+   "Solution":["Designed fully in SolidWorks, exported to STEP and 3D-printed primarily in PLA and ABS."]}}
+];
+
+const gallery = {"efficycle":3,"catapult":3,"gas-leak":2,"bistable-gripper":4,"rocket-nozzle":5,"connecting-rod":3,"airframe-panel":6,"sheet-forming":4,"supra-sae":3,"seating-assist":2,"scissor-jack":3,"one-energy":4};
+projects.forEach(p=>{ const n=gallery[p.id]; p.images = n ? Array.from({length:n},(_,i)=>`assets/img/${p.id}/${i+1}.jpg`) : [`assets/img/${p.id}.jpg`]; });
+
+const grid = document.getElementById('grid');
+grid.innerHTML = projects.map((p,i)=>`
+  <article class="card reveal" data-cat="${p.cat}" onclick="openModal(${i})" tabindex="0" onkeydown="if(event.key==='Enter')openModal(${i})">
+    <div class="img"><img src="${p.images[0]}" alt="${p.title}" loading="lazy">${p.images.length>1?`<span class="count">${p.images.length} images</span>`:''}</div>
+    <div class="body">
+      <span class="cat">${p.label}</span>
+      <h3>${p.title}</h3>
+      <p>${p.blurb}</p>
+      <div class="chips">${p.tags.map(t=>`<span class="chip">${t}</span>`).join('')}</div>
+    </div>
+  </article>`).join('');
+
+document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.filters button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  const f=b.dataset.f;
+  document.querySelectorAll('.card').forEach(c=>c.classList.toggle('hide', f!=='all' && c.dataset.cat!==f));
+});
+
+const modal=document.getElementById('modal');
+function openModal(i){
+  const p=projects[i];
+  showImg(p,0);
+  document.getElementById('m-thumbs').innerHTML = p.images.length>1 ? p.images.map((s,k)=>`<img src="${s}" alt="" class="${k?'':'on'}" onclick="showImg(projects[${i}],${k})">`).join('') : '';
+  document.getElementById('m-body').innerHTML=`<span class="mono" style="color:var(--accent2);font-size:.8rem">${p.label}</span><h3>${p.title}</h3>`+
+    Object.entries(p.sections).map(([h,items])=>`<h4>${h}</h4><ul>${items.map(x=>`<li>${x}</li>`).join('')}</ul>`).join('')+
+    `<div class="chips" style="margin-top:20px">${p.tags.map(t=>`<span class="chip">${t}</span>`).join('')}</div>`;
+  modal.classList.add('open'); document.body.style.overflow='hidden';
+}
+function showImg(p,k){
+  const m=document.getElementById('m-img'); m.src=p.images[k]; m.alt=p.title+' image '+(k+1);
+  document.querySelectorAll('#m-thumbs img').forEach((x,j)=>x.classList.toggle('on',j===k));
+}
+function closeModal(){modal.classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
