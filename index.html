@@ -312,7 +312,6 @@
     <div class="sec-head reveal"><span class="mono">04 / projects</span><h2>Selected work</h2></div>
     <div class="filters reveal">
       <button class="on" data-f="all">All</button>
-      <button data-f="industry">Industry</button>
       <button data-f="research">Research &amp; FEA</button>
       <button data-f="vehicle">Vehicles</button>
       <button data-f="design">Design &amp; Fabrication</button>
@@ -393,14 +392,6 @@
 
 <script>
 const projects = [
-  {id:"one-energy", cat:"industry", label:"Industry · EV Battery", title:"Battery BMS Enclosure Redesign — Our Next Energy",
-   blurb:"Lighter, more manufacturable EV battery BMS enclosure shaped by supplier DFM feedback.",
-   tags:["SolidWorks","GD&T","ANSYS","DFM"],
-   sections:{"What I did":[
-     "Redesigned battery BMS enclosure geometry for mass manufacturing using GD&T and DFM input from Tier 1 sheet metal and injection-molding suppliers — 20% lighter.",
-     "Ran worst-case and RSS tolerance stack-ups and FEA to refine bracket geometry and fastener setup, improving joint reliability / torque retention by 50%.",
-     "Built a strain-gauged PCB test setup, located high-stress areas and adjusted supports to keep strain under 450 µε.",
-     "Reworked electromechanical layout (busbars, PCBs, cooling plates) based on thermal testing, lowering peak temperature by 3 °C."]}},
   {id:"bistable-gripper", video:"1mdMowzRSwRSYtatWEwvd1Fz_E8S0LtyN", cat:"research", label:"Research · DEVCOM Army Research Lab", title:"Bi-stable Gripping Mechanism for Drone Recharging",
    blurb:"A 3D-printed, near-zero-power gripper that lets low-battery drones latch onto charging stations.",
    tags:["Abaqus","Python","Genetic Algorithm","MTS Testing"],
@@ -470,7 +461,7 @@ const projects = [
    "Solution":["Designed fully in SolidWorks, exported to STEP and 3D-printed primarily in PLA and ABS."]}}
 ];
 
-const gallery = {"efficycle":3,"catapult":3,"gas-leak":2,"bistable-gripper":4,"rocket-nozzle":5,"connecting-rod":3,"airframe-panel":6,"sheet-forming":4,"supra-sae":5,"seating-assist":2,"scissor-jack":3,"one-energy":4};
+const gallery = {"efficycle":3,"catapult":3,"gas-leak":2,"bistable-gripper":4,"rocket-nozzle":5,"connecting-rod":3,"airframe-panel":6,"sheet-forming":4,"supra-sae":5,"seating-assist":2,"scissor-jack":3};
 projects.forEach(p=>{ const n=gallery[p.id]; p.images = n ? Array.from({length:n},(_,i)=>`assets/img/${p.id}/${i+1}.jpg`) : [`assets/img/${p.id}.jpg`]; });
 
 const grid = document.getElementById('grid');
